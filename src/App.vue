@@ -5,4 +5,6 @@
   </div>
 </template>
 
-<style lang="less"></style>
+<style lang="less">
+@import './assets/css/base.css';
+</style>
