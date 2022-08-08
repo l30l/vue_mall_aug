@@ -1,10 +1,17 @@
 <template>
-  <div class="home-view">this is home view</div>
+  <div class="home-view">
+    <home-top-bar></home-top-bar>
+  </div>
 </template>
 
 <script>
+import HomeTopBar from './components/HomeTopBar.vue'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    HomeTopBar
+  }
 }
 </script>
 
