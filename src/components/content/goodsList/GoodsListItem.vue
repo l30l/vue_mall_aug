@@ -1,7 +1,7 @@
 <template>
   <div class="goods-list-item">
     <div class="goods-item-img">
-      <img :src="goodsListItem.show.img" alt="" />
+      <img :src="goodsListItem.show.img" alt="" @load="itemImgLoaded" />
     </div>
     <p class="goods-item-title">
       {{ goodsListItem.title }}
@@ -27,6 +27,35 @@ export default {
       default() {
         return {}
       }
+    }
+  },
+  data() {
+    return {}
+  },
+  methods: {
+    itemImgLoaded() {
+      // clearTimeout(this.timer)
+      // this.timer = setTimeout(() => {
+      //   this.$bus.$emit('itemImgLoaded')
+      // }, 300)
+      // clearTimeout(this.timer)
+
+      // this.timer = setTimeout(() => {
+      //   console.log('11111')
+      // }, 500)
+
+      // this.$bus.$emit('itemImgLoaded')
+      // debounce(this.$bus.$emit('itemImgLoaded'), 3000)
+      // if (this.timer) {
+      //   clearTimeout(this.timer)
+      // }
+      // this.timer = setTimeout(() => {
+      //   console.log('11')
+      // }, 10000)
+
+      // console.log(this.timer)
+
+      this.$bus.$emit('itemImgLoaded')
     }
   }
 }

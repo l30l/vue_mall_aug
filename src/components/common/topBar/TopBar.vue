@@ -21,6 +21,8 @@ export default {
 <style lang="less">
 .top-bar {
   display: flex;
+  position: relative;
+  z-index: 9;
   width: 100%;
   height: 44px;
   background: var(--color-tint);

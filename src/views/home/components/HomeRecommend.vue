@@ -35,6 +35,7 @@ export default {
   text-align: center;
   font-size: 14px;
   border-bottom: 10px solid #eee;
+  background: #fff;
 }
 .recommend-item {
   flex: 1;

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { NavBar, NavBarItem } from '@/components/common/NavBar'
+import { NavBar, NavBarItem } from '@/components/common/navBar'
 export default {
   components: {
     NavBar,
