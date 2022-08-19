@@ -1,7 +1,7 @@
 <template>
-  <div class="goods-list-item">
+  <div class="goods-list-item" @click="itemClick">
     <div class="goods-item-img">
-      <img :src="goodsListItem.show.img" alt="" @load="itemImgLoaded" />
+      <img :src="showImg" alt="" @load="itemImgLoaded" />
     </div>
     <p class="goods-item-title">
       {{ goodsListItem.title }}
@@ -32,6 +32,11 @@ export default {
   data() {
     return {}
   },
+  computed: {
+    showImg() {
+      return this.goodsListItem.image || this.goodsListItem.show.img
+    }
+  },
   methods: {
     itemImgLoaded() {
       // clearTimeout(this.timer)
@@ -56,6 +61,14 @@ export default {
       // console.log(this.timer)
 
       this.$bus.$emit('itemImgLoaded')
+    },
+    itemClick() {
+      this.$router.push({
+        path: '/detail',
+        query: {
+          id: this.goodsListItem.iid
+        }
+      })
     }
   }
 }

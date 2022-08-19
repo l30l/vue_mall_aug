@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <main-nav-bar></main-nav-bar>
+    <keep-alive exclude="Detail">
+      <router-view></router-view>
+    </keep-alive>
+    <main-nav-bar v-if="$route.meta.flag"></main-nav-bar>
   </div>
 </template>
 

@@ -50,6 +50,14 @@ export default {
       // console.log('111')
     })
   },
+  activated() {
+    this.$refs.scroll.refresh()
+    this.$refs.scroll.scrollTo(0, this.positionY, 0)
+    // console.log('home activated')
+  },
+  deactivated() {
+    this.positionY = this.$refs.scroll.getPositionY()
+  },
   data() {
     return {
       banner: [],
@@ -66,7 +74,8 @@ export default {
       tabBarItem: ['流行', '新款', '精选'],
       tabBarTop: 0,
       isTabShow: false,
-      isBackTopShow: false
+      isBackTopShow: false,
+      positionY: 0
     }
   },
   components: {

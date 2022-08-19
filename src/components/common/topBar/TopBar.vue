@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .top-bar {
   display: flex;
   position: relative;
@@ -27,7 +27,6 @@ export default {
   height: 44px;
   background: var(--color-tint);
   line-height: 44px;
-  vertical-align: middle;
   text-align: center;
   color: #fff;
 }
@@ -37,5 +36,8 @@ export default {
 }
 .middle {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 </style>

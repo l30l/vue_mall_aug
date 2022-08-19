@@ -48,8 +48,11 @@ export default {
     refresh() {
       this.scroll && this.scroll.refresh()
     },
-    scrollTo() {
-      this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
+    scrollTo(x, y, time) {
+      this.scroll && this.scroll.scrollTo(x, y, time)
+    },
+    getPositionY() {
+      return this.scroll ? this.scroll.y : 0
     }
   }
 }
