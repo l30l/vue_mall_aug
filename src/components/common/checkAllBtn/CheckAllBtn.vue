@@ -1,6 +1,8 @@
 <template>
-  <div class="check-all-btn" @click="checkAllClick" :class="{ selcted: isCheckedAll }">
-    <img src="@/assets/img/cart/tick.svg" alt="" v-show="isCheckedAll" />
+  <div class="check-all-btn" @click="checkAllClick">
+    <div class="selected" v-show="isCheckedAll">
+      <img src="@/assets/img/cart/tick.svg" alt="" />
+    </div>
   </div>
 </template>
 
@@ -9,7 +11,7 @@ export default {
   name: 'CheckAllBtn',
   data() {
     return {
-      isCheckedAll: false
+      isCheckedAll: true
     }
   },
   methods: {
@@ -30,10 +32,16 @@ export default {
   img {
     width: 95%;
     position: relative;
-    top: -10px;
+    top: -9px;
   }
 }
 .selected {
+  position: relative;
+  top: -1px;
+  left: -1px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
   background: var(--color-tint);
   border-color: var(--color-tint);
 }
