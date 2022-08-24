@@ -11,5 +11,11 @@ export default {
   },
   itemSelect(state, payload) {
     payload.checked = !payload.checked
+  },
+  deselectAll(state) {
+    state.cartList.forEach((item) => (item.checked = false))
+  },
+  selectAll(state) {
+    state.cartList.forEach((item) => (item.checked = true))
   }
 }

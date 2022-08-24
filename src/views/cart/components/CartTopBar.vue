@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     totalCount() {
-      return 1
+      return this.$store.state.cartList.length
     }
   }
 }

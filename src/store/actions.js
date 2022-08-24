@@ -20,5 +20,12 @@ export default {
   },
   itemSelect(context, payload) {
     context.commit('itemSelect', payload)
+  },
+  selectAll(context, payload) {
+    if (payload) {
+      context.commit('deselectAll')
+    } else {
+      context.commit('selectAll')
+    }
   }
 }

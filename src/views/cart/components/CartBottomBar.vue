@@ -1,13 +1,13 @@
 <template>
   <div class="cart-bottom-bar">
     <div class="check-all">
-      <check-btn></check-btn>
+      <check-btn :isChecked="isSelectAll" @click.native="checkAllClick"></check-btn>
       <span>全选</span>
     </div>
     <div class="total-price">
-      <span>合计：</span>
+      <span>合计：{{ totalPrice }}</span>
     </div>
-    <div class="check-out">去支付()</div>
+    <div class="check-out">去支付({{ purchaseCount }})</div>
   </div>
 </template>
 
@@ -17,6 +17,32 @@ export default {
   name: 'CartBottomBar',
   components: {
     CheckBtn
+  },
+  methods: {
+    checkAllClick() {
+      this.$store.dispatch('selectAll', this.isSelectAll)
+    }
+  },
+  computed: {
+    isSelectAll() {
+      if (this.$store.state.cartList.length === 0) return false
+      return !this.$store.state.cartList.some((item) => !item.checked)
+    },
+    purchaseCount() {
+      return this.$store.state.cartList
+        .filter((item) => item.checked)
+        .reduce((pre, cur) => {
+          return pre + cur.count
+        }, 0)
+    },
+    totalPrice() {
+      return this.$store.state.cartList
+        .filter((item) => item.checked)
+        .reduce((pre, cur) => {
+          return pre + cur.count * cur.price
+        }, 0)
+        .toFixed(2)
+    }
   }
 }
 </script>

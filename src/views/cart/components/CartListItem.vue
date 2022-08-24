@@ -12,6 +12,7 @@
       <div class="other-info">
         <span class="price">¥ {{ cartItem.price }}</span>
         <span class="count">x{{ cartItem.count }}</span>
+        <counter :count="count" @countChange="countChange"></counter>
       </div>
     </div>
   </div>
@@ -19,8 +20,10 @@
 
 <script>
 import CheckBtn from '@/components/common/checkBtn/CheckBtn.vue'
+import Counter from '@/components/common/counter/Counter.vue'
+
 export default {
-  components: { CheckBtn },
+  components: { CheckBtn, Counter },
   name: 'CartListItem',
   props: {
     cartItem: {
@@ -33,6 +36,14 @@ export default {
   methods: {
     checkClick() {
       this.$store.dispatch('itemSelect', this.cartItem)
+    },
+    countChange(newCount) {
+      console.log(newCount)
+    }
+  },
+  computed: {
+    count() {
+      return this.cartItem.count
     }
   }
 }
