@@ -1,6 +1,6 @@
 <template>
-  <div class="check-all-btn" @click="checkAllClick">
-    <div class="selected" v-show="isCheckedAll">
+  <div class="check-btn">
+    <div class="selected" v-show="isChecked">
       <img src="@/assets/img/cart/tick.svg" alt="" />
     </div>
   </div>
@@ -8,22 +8,28 @@
 
 <script>
 export default {
-  name: 'CheckAllBtn',
-  data() {
-    return {
-      isCheckedAll: true
-    }
-  },
-  methods: {
-    checkAllClick() {
-      this.isCheckedAll = !this.isCheckedAll
+  name: 'CheckBtn',
+  // data() {
+  //   return {
+  //     isChecked: true
+  //   }
+  // },
+  props: {
+    isChecked: {
+      type: Boolean,
+      default: true
     }
   }
+  // methods: {
+  //   checkBtnClick() {
+  //     this.isChecked = !this.isChecked
+  //   }
+  // }
 }
 </script>
 
 <style lang="less" scoped>
-.check-all-btn {
+.check-btn {
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -31,8 +37,8 @@ export default {
   border: 1px solid #666;
   img {
     width: 95%;
-    position: relative;
-    top: -9px;
+    position: absolute;
+    top: 1px;
   }
 }
 .selected {

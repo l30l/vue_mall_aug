@@ -1,7 +1,7 @@
 <template>
   <div class="cart-bottom-bar">
     <div class="check-all">
-      <check-all-btn></check-all-btn>
+      <check-btn></check-btn>
       <span>全选</span>
     </div>
     <div class="total-price">
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import CheckAllBtn from '@/components/common/checkAllBtn/CheckAllBtn.vue'
+import CheckBtn from '@/components/common/checkBtn/CheckBtn.vue'
 export default {
   name: 'CartBottomBar',
   components: {
-    CheckAllBtn
+    CheckBtn
   }
 }
 </script>

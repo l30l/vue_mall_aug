@@ -10,7 +10,7 @@
       <detail-comments :detailComments="detailComments" ref="comments"></detail-comments>
       <goods-list :goodsList="detailRecommends" ref="recommends"></goods-list>
     </scroll>
-    <detail-bottom-bar></detail-bottom-bar>
+    <detail-bottom-bar @addCart="addCart"></detail-bottom-bar>
   </div>
 </template>
 
@@ -83,7 +83,6 @@ export default {
     getDetailRecommend() {
       getDetailRecommend().then(({ data }) => {
         this.detailRecommends = data.list
-        console.log(this.detailRecommends)
       })
     },
     swiperImgLoaded() {
@@ -102,7 +101,6 @@ export default {
       // }, 5000)
       // getTop()
       this.getThemeTop()
-      console.log(this.themeOffsetTop)
     },
     // getTopHeight() {
     //   console.log(this.$refs.params.$el)
@@ -116,6 +114,15 @@ export default {
           this.$refs.topBar.currentIndex = i
         }
       }
+    },
+    addCart() {
+      const product = {}
+      product.iid = this.id
+      product.img = this.swiperImg[0]
+      product.title = this.goodsDetail.title
+      product.desc = this.goodsDetail.desc
+      product.price = this.goodsDetail.nowPrice
+      this.$store.dispatch('addCart', product)
     }
   }
 }

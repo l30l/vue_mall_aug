@@ -17,9 +17,11 @@ export class GoodsDetail {
   constructor(data) {
     this.title = data.itemInfo.title
     this.price = data.itemInfo.price
+    this.nowPrice = data.itemInfo.lowNowPrice
     this.oldPrice = data.itemInfo.oldPrice
     this.discountDesc = data.itemInfo.discountDesc
     this.discountBgColor = data.itemInfo.discountBgColor
+    this.desc = data.itemInfo.desc
     this.columns = data.columns
     this.services = data.shopInfo.services
   }
