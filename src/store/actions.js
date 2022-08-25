@@ -9,14 +9,18 @@ export default {
     //   payload.count = 1
     //   context.state.push(payload)
     // }
-    const oldProduct = context.state.cartList.find((item) => item.iid === payload.iid)
-    if (oldProduct) {
-      // oldProduct = payload
-      context.commit('addCount', oldProduct)
-    } else {
-      payload.count = 1
-      context.commit('addNewItem', payload)
-    }
+    return new Promise((resolve) => {
+      const oldProduct = context.state.cartList.find((item) => item.iid === payload.iid)
+      if (oldProduct) {
+        // oldProduct = payload
+        context.commit('addCount', oldProduct)
+        resolve('商品数量 + 1')
+      } else {
+        payload.count = 1
+        context.commit('addNewItem', payload)
+        resolve('添加了新商品')
+      }
+    })
   },
   itemSelect(context, payload) {
     context.commit('itemSelect', payload)

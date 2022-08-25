@@ -2,6 +2,7 @@
   <div class="detail">
     <detail-top-bar @itemClick="itemClick" ref="topBar"></detail-top-bar>
     <scroll :pullUpLoad="true" ref="scroll" @onScroll="onScroll">
+      <toast></toast>
       <detail-swiper :swiperImg="swiperImg" @swiperImgLoaded="swiperImgLoaded"></detail-swiper>
       <detail-basic-info :goodsDetail="goodsDetail"></detail-basic-info>
       <detail-shop-info :shopInfo="shopInfo"></detail-shop-info>
@@ -28,9 +29,10 @@ import DetailParams from './components/DetailParams.vue'
 import DetailComments from './components/DetailComments.vue'
 import GoodsList from '@/components/content/goodsList/GoodsList.vue'
 import DetailBottomBar from './components/DetailBottomBar.vue'
+import Toast from '@/components/common/toast/Toast.vue'
 
 export default {
-  components: { DetailTopBar, DetailSwiper, DetailBasicInfo, DetailShopInfo, Scroll, DetailInfo, DetailParams, DetailComments, GoodsList, DetailBottomBar },
+  components: { DetailTopBar, DetailSwiper, DetailBasicInfo, DetailShopInfo, Scroll, DetailInfo, DetailParams, DetailComments, GoodsList, DetailBottomBar, Toast },
   name: 'Detail',
   created() {
     // console.log(this.$route.query.id)
@@ -122,7 +124,9 @@ export default {
       product.title = this.goodsDetail.title
       product.desc = this.goodsDetail.desc
       product.price = this.goodsDetail.nowPrice
-      this.$store.dispatch('addCart', product)
+      this.$store.dispatch('addCart', product).then((res) => {
+        this.$toast.showMessage(res)
+      })
     }
   }
 }
