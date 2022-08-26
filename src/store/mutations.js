@@ -17,5 +17,8 @@ export default {
   },
   selectAll(state) {
     state.cartList.forEach((item) => (item.checked = true))
+  },
+  countChange(state, { newCount, item }) {
+    item.count = newCount
   }
 }

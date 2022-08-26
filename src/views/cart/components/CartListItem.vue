@@ -38,7 +38,8 @@ export default {
       this.$store.dispatch('itemSelect', this.cartItem)
     },
     countChange(newCount) {
-      console.log(newCount)
+      const item = this.cartItem
+      this.$store.dispatch('countChange', { newCount, item })
     }
   },
   computed: {

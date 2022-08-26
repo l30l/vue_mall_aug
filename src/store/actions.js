@@ -31,5 +31,8 @@ export default {
     } else {
       context.commit('selectAll')
     }
+  },
+  countChange(context, { newCount, item }) {
+    context.commit('countChange', { newCount, item })
   }
 }
